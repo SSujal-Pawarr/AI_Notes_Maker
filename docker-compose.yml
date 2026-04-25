@@ -7,4 +7,10 @@ services:
       MYSQL_DATABASE:notes_db
       ports:
         - "3306:3306"
+  app:
+    build:
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mysql
       
