@@ -34,4 +34,7 @@ if menu == "Login":
     if st.button("Login"):
         d=db();c=d.cursor()
         c.execute("SELECT * FROM users WHERE username=%s AND password=%s",(u,p))
-        
+        if c.fetchone():
+            st.session_state["u"]=u
+            st.success("Logged in")
+            
