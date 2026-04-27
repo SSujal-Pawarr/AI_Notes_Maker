@@ -27,3 +27,11 @@ if menu == "Register":
         d.commit()
         st.success("Registered")
         
+
+if menu == "Login":
+    u=st.text_input("username",key="login_user")
+    p=st.text_input("password",type="password",kery="login_pass")
+    if st.button("Login"):
+        d=db();c=d.cursor()
+        c.execute("SELECT * FROM users WHERE username=%s AND password=%s",(u,p))
+        
