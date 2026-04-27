@@ -37,4 +37,6 @@ if menu == "Login":
         if c.fetchone():
             st.session_state["u"]=u
             st.success("Logged in")
-            
+        else:
+            st.error("Invalid")
+
