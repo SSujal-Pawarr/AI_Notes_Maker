@@ -40,3 +40,19 @@ if menu == "Login":
         else:
             st.error("Invalid")
 
+if "u" in st.session_state:
+    f=st.file_uploader("PDF",type=["pdf"])
+    if f:
+        r=PdfReader(f)
+        t=""
+        for p in r.pages:
+            t+=p.extract_text()
+        if st.button ("Generate"):
+            res=client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role":"user","content":"Make short notes:\n"+t[:3000]}]
+            )
+            out=res.choices[0].message.content
+            st.write(out)
+            
