@@ -20,6 +20,8 @@ def db():
         database="notes_db"
     )
 
+# ================= DATABASE CONNECTION =================
+
 def create_tables():
 
     d = db()
