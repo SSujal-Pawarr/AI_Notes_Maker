@@ -19,6 +19,33 @@ def db():
         database="notes_db"
     )
 
+def create_tables():
+
+    d = db()
+
+    c = d.cursor()
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS users(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50),
+            password VARCHAR(50)
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS notes(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50),
+            filename VARCHAR(255),
+            notes LONGTEXT
+        )
+    """)
+
+    d.commit()
+
+    d.close()
+
 # ================= PAGE CONFIG =================
 st.set_page_config(
     page_title="AI Notes Generator",
@@ -29,6 +56,7 @@ st.set_page_config(
 # ================= TITLE =================
 st.title("📘 AI Notes Generator")
 
+create_tables()
 # ================= SIDEBAR =================
 menu = st.sidebar.selectbox(
     "Menu",
