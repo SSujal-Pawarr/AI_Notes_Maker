@@ -5,6 +5,7 @@ import mysql.connector
 from PyPDF2 import PdfReader
 from groq import Groq
 
+
 # ================= GROQ CLIENT =================
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
