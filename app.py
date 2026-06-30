@@ -1,10 +1,8 @@
 import os
-
 import streamlit as st
 import mysql.connector
 from PyPDF2 import PdfReader
 from groq import Groq
-
 
 # ================= GROQ CLIENT =================
 client = Groq(
